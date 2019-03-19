@@ -1,0 +1,375 @@
+1.  man -k
+    man --apropos
+    I looked through the entire " man man"
+
+2.  /usr/local/cs/bin/mv
+    /usr/bin/sh
+    I looked through the        "whereis" and copied the file path.
+
+3.  ar (1)               - create, modify, and extract from archives
+    ar (1p)              - create and maintain library archives
+    pr (1)               - convert text files for printing
+    pr (1p)              - print files
+    tr (1)               - translate or delete characters
+    tr (1p)              - translate characters
+    I  simply used the man -k command.
+
+4.  /etc/alternatives/emacs
+    I used the ls -al command and also ran the program to ensure the correct ans\
+wer
+
+5.  Version number is 4.8.5 (/usr/bin/gcc)
+    Version number is 8.2.0 (gcc)
+    Difference is in the wrapper and the target.
+    I used the appendix of -v to solve this problem
+
+6.  u+sx: gives a user permission to execute a file as its owner
+    o-w:  removes other users not in the file's group's permission to write
+    For this one, I looked into the manual for chmod using man chmod
+
+7.  309 last edited
+    man chmod
+    find /usr/local/cs -type d -mtime -28
+	/usr/local/cs
+	/usr/local/cs/src/bison
+	/usr/local/cs/src/bison/RCS
+	/usr/local/cs/src/grep
+	/usr/local/cs/src/grep/RCS
+	/usr/local/cs/src/ocaml
+	/usr/local/cs/src/ocaml/RCS
+	/usr/local/cs/share/info
+	/usr/local/cs/share/man/man1
+	/usr/local/cs/share/man/man3
+	/usr/local/cs/bin
+	/usr/local/cs/.del
+	/usr/local/cs/.del/grep-3.1
+	/usr/local/cs/.del/grep-3.2
+	/usr/local/cs/.del/grep-3.2/share
+	/usr/local/cs/.del/grep-3.2/share/locale
+	/usr/local/cs/.del/grep-3.2/share/locale/af
+	/usr/local/cs/.del/grep-3.2/share/locale/af/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/be
+	/usr/local/cs/.del/grep-3.2/share/locale/be/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/bg
+	/usr/local/cs/.del/grep-3.2/share/locale/bg/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ca
+	/usr/local/cs/.del/grep-3.2/share/locale/ca/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/cs
+	/usr/local/cs/.del/grep-3.2/share/locale/cs/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/da
+	/usr/local/cs/.del/grep-3.2/share/locale/da/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/de
+	/usr/local/cs/.del/grep-3.2/share/locale/de/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/el
+	/usr/local/cs/.del/grep-3.2/share/locale/el/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/eo
+	/usr/local/cs/.del/grep-3.2/share/locale/eo/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/es
+	/usr/local/cs/.del/grep-3.2/share/locale/es/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/et
+	/usr/local/cs/.del/grep-3.2/share/locale/et/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/eu
+	/usr/local/cs/.del/grep-3.2/share/locale/eu/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/fi
+	/usr/local/cs/.del/grep-3.2/share/locale/fi/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/fr
+	/usr/local/cs/.del/grep-3.2/share/locale/fr/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ga
+	/usr/local/cs/.del/grep-3.2/share/locale/ga/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/gl
+	/usr/local/cs/.del/grep-3.2/share/locale/gl/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/he
+	/usr/local/cs/.del/grep-3.2/share/locale/he/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/hr
+	/usr/local/cs/.del/grep-3.2/share/locale/hr/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/hu
+	/usr/local/cs/.del/grep-3.2/share/locale/hu/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/id
+	/usr/local/cs/.del/grep-3.2/share/locale/id/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/it
+	/usr/local/cs/.del/grep-3.2/share/locale/it/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ja
+	/usr/local/cs/.del/grep-3.2/share/locale/ja/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ko
+	/usr/local/cs/.del/grep-3.2/share/locale/ko/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ky
+	/usr/local/cs/.del/grep-3.2/share/locale/ky/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/lt
+	/usr/local/cs/.del/grep-3.2/share/locale/lt/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/nb
+	/usr/local/cs/.del/grep-3.2/share/locale/nb/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/nl
+	/usr/local/cs/.del/grep-3.2/share/locale/nl/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/pa
+	/usr/local/cs/.del/grep-3.2/share/locale/pa/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/pl
+	/usr/local/cs/.del/grep-3.2/share/locale/pl/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/pt
+	/usr/local/cs/.del/grep-3.2/share/locale/pt/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/pt_BR
+	/usr/local/cs/.del/grep-3.2/share/locale/pt_BR/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ro
+	/usr/local/cs/.del/grep-3.2/share/locale/ro/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/ru
+	/usr/local/cs/.del/grep-3.2/share/locale/ru/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/sk
+	/usr/local/cs/.del/grep-3.2/share/locale/sk/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/sl
+	/usr/local/cs/.del/grep-3.2/share/locale/sl/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/sr
+	/usr/local/cs/.del/grep-3.2/share/locale/sr/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/sv
+	/usr/local/cs/.del/grep-3.2/share/locale/sv/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/th
+	/usr/local/cs/.del/grep-3.2/share/locale/th/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/tr
+	/usr/local/cs/.del/grep-3.2/share/locale/tr/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/uk
+	/usr/local/cs/.del/grep-3.2/share/locale/uk/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/vi
+	/usr/local/cs/.del/grep-3.2/share/locale/vi/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/zh_CN
+	/usr/local/cs/.del/grep-3.2/share/locale/zh_CN/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/locale/zh_TW
+	/usr/local/cs/.del/grep-3.2/share/locale/zh_TW/LC_MESSAGES
+	/usr/local/cs/.del/grep-3.2/share/man
+	/usr/local/cs/.del/grep-3.2/share/man/man1
+	/usr/local/cs/.del/grep-3.2/share/info
+	/usr/local/cs/.del/grep-3.2/bin
+	/usr/local/cs/bison-3.2.3
+	/usr/local/cs/bison-3.2.3/share
+	/usr/local/cs/bison-3.2.3/share/locale
+	/usr/local/cs/bison-3.2.3/share/locale/ca
+	/usr/local/cs/bison-3.2.3/share/locale/ca/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/da
+	/usr/local/cs/bison-3.2.3/share/locale/da/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/de
+	/usr/local/cs/bison-3.2.3/share/locale/de/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/el
+	/usr/local/cs/bison-3.2.3/share/locale/el/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/eo
+	/usr/local/cs/bison-3.2.3/share/locale/eo/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/es
+	/usr/local/cs/bison-3.2.3/share/locale/es/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/et
+	/usr/local/cs/bison-3.2.3/share/locale/et/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/fi
+	/usr/local/cs/bison-3.2.3/share/locale/fi/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/fr
+	/usr/local/cs/bison-3.2.3/share/locale/fr/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ga
+	/usr/local/cs/bison-3.2.3/share/locale/ga/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/hr
+	/usr/local/cs/bison-3.2.3/share/locale/hr/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/id
+	/usr/local/cs/bison-3.2.3/share/locale/id/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/it
+	/usr/local/cs/bison-3.2.3/share/locale/it/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ja
+	/usr/local/cs/bison-3.2.3/share/locale/ja/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ms
+	/usr/local/cs/bison-3.2.3/share/locale/ms/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/nb
+	/usr/local/cs/bison-3.2.3/share/locale/nb/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/nl
+	/usr/local/cs/bison-3.2.3/share/locale/nl/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/pl
+	/usr/local/cs/bison-3.2.3/share/locale/pl/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/pt
+	/usr/local/cs/bison-3.2.3/share/locale/pt/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/pt_BR
+	/usr/local/cs/bison-3.2.3/share/locale/pt_BR/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ro
+	/usr/local/cs/bison-3.2.3/share/locale/ro/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ru
+	/usr/local/cs/bison-3.2.3/share/locale/ru/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/sr
+	/usr/local/cs/bison-3.2.3/share/locale/sr/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/sv
+	/usr/local/cs/bison-3.2.3/share/locale/sv/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/tr
+	/usr/local/cs/bison-3.2.3/share/locale/tr/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/uk
+	/usr/local/cs/bison-3.2.3/share/locale/uk/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/vi
+	/usr/local/cs/bison-3.2.3/share/locale/vi/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/zh_CN
+	/usr/local/cs/bison-3.2.3/share/locale/zh_CN/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/zh_TW
+	/usr/local/cs/bison-3.2.3/share/locale/zh_TW/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ast
+	/usr/local/cs/bison-3.2.3/share/locale/ast/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/gl
+	/usr/local/cs/bison-3.2.3/share/locale/gl/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/hu
+	/usr/local/cs/bison-3.2.3/share/locale/hu/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ia
+	/usr/local/cs/bison-3.2.3/share/locale/ia/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/ky
+	/usr/local/cs/bison-3.2.3/share/locale/ky/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/lt
+	/usr/local/cs/bison-3.2.3/share/locale/lt/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/lv
+	/usr/local/cs/bison-3.2.3/share/locale/lv/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/sl
+	/usr/local/cs/bison-3.2.3/share/locale/sl/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/sq
+	/usr/local/cs/bison-3.2.3/share/locale/sq/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/locale/th
+	/usr/local/cs/bison-3.2.3/share/locale/th/LC_MESSAGES
+	/usr/local/cs/bison-3.2.3/share/aclocal
+	/usr/local/cs/bison-3.2.3/share/doc
+	/usr/local/cs/bison-3.2.3/share/doc/bison
+	/usr/local/cs/bison-3.2.3/share/doc/bison/examples
+	/usr/local/cs/bison-3.2.3/share/doc/bison/examples/c++
+	/usr/local/cs/bison-3.2.3/share/doc/bison/examples/calc++
+	/usr/local/cs/bison-3.2.3/share/doc/bison/examples/mfcalc
+	/usr/local/cs/bison-3.2.3/share/doc/bison/examples/rpcalc
+	/usr/local/cs/bison-3.2.3/share/bison
+	/usr/local/cs/bison-3.2.3/share/bison/m4sugar
+	/usr/local/cs/bison-3.2.3/share/bison/xslt
+	/usr/local/cs/bison-3.2.3/share/man
+	/usr/local/cs/bison-3.2.3/share/man/man1
+	/usr/local/cs/bison-3.2.3/share/info
+	/usr/local/cs/bison-3.2.3/bin
+	/usr/local/cs/bison-3.2.3/lib
+	/usr/local/cs/ocaml-4.07.1
+	/usr/local/cs/ocaml-4.07.1/bin
+	/usr/local/cs/ocaml-4.07.1/lib
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/stublibs
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/compiler-libs
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/caml
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/threads
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/vmthreads
+	/usr/local/cs/ocaml-4.07.1/lib/ocaml/ocamldoc
+	/usr/local/cs/ocaml-4.07.1/man
+	/usr/local/cs/ocaml-4.07.1/man/man1
+	/usr/local/cs/ocaml-4.07.1/man/man3
+	/usr/local/cs/grep-3.3
+	/usr/local/cs/grep-3.3/share
+	/usr/local/cs/grep-3.3/share/locale
+	/usr/local/cs/grep-3.3/share/locale/af
+	/usr/local/cs/grep-3.3/share/locale/af/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/be
+	/usr/local/cs/grep-3.3/share/locale/be/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/bg
+	/usr/local/cs/grep-3.3/share/locale/bg/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ca
+	/usr/local/cs/grep-3.3/share/locale/ca/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/cs
+	/usr/local/cs/grep-3.3/share/locale/cs/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/da
+	/usr/local/cs/grep-3.3/share/locale/da/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/de
+	/usr/local/cs/grep-3.3/share/locale/de/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/el
+	/usr/local/cs/grep-3.3/share/locale/el/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/eo
+	/usr/local/cs/grep-3.3/share/locale/eo/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/es
+	/usr/local/cs/grep-3.3/share/locale/es/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/et
+	/usr/local/cs/grep-3.3/share/locale/et/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/eu
+	/usr/local/cs/grep-3.3/share/locale/eu/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/fi
+	/usr/local/cs/grep-3.3/share/locale/fi/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/fr
+	/usr/local/cs/grep-3.3/share/locale/fr/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ga
+	/usr/local/cs/grep-3.3/share/locale/ga/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/gl
+	/usr/local/cs/grep-3.3/share/locale/gl/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/he
+	/usr/local/cs/grep-3.3/share/locale/he/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/hr
+	/usr/local/cs/grep-3.3/share/locale/hr/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/hu
+	/usr/local/cs/grep-3.3/share/locale/hu/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/id
+	/usr/local/cs/grep-3.3/share/locale/id/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/it
+	/usr/local/cs/grep-3.3/share/locale/it/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ja
+	/usr/local/cs/grep-3.3/share/locale/ja/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ko
+	/usr/local/cs/grep-3.3/share/locale/ko/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ky
+	/usr/local/cs/grep-3.3/share/locale/ky/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/lt
+	/usr/local/cs/grep-3.3/share/locale/lt/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/nb
+	/usr/local/cs/grep-3.3/share/locale/nb/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/nl
+	/usr/local/cs/grep-3.3/share/locale/nl/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/pa
+	/usr/local/cs/grep-3.3/share/locale/pa/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/pl
+	/usr/local/cs/grep-3.3/share/locale/pl/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/pt
+	/usr/local/cs/grep-3.3/share/locale/pt/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/pt_BR
+	/usr/local/cs/grep-3.3/share/locale/pt_BR/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ro
+	/usr/local/cs/grep-3.3/share/locale/ro/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/ru
+	/usr/local/cs/grep-3.3/share/locale/ru/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/sk
+	/usr/local/cs/grep-3.3/share/locale/sk/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/sl
+	/usr/local/cs/grep-3.3/share/locale/sl/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/sr
+	/usr/local/cs/grep-3.3/share/locale/sr/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/sv
+	/usr/local/cs/grep-3.3/share/locale/sv/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/th
+	/usr/local/cs/grep-3.3/share/locale/th/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/tr
+	/usr/local/cs/grep-3.3/share/locale/tr/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/uk
+	/usr/local/cs/grep-3.3/share/locale/uk/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/vi
+	/usr/local/cs/grep-3.3/share/locale/vi/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/zh_CN
+	/usr/local/cs/grep-3.3/share/locale/zh_CN/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/locale/zh_TW
+	/usr/local/cs/grep-3.3/share/locale/zh_TW/LC_MESSAGES
+	/usr/local/cs/grep-3.3/share/man
+	/usr/local/cs/grep-3.3/share/man/man1
+	/usr/local/cs/grep-3.3/share/info
+	/usr/local/cs/grep-3.3/bin
+    I knew for this one that it would have to do with something in the find com\
+mands, so I started by using the man chmod and looking through the entire manua\
+l first.
+
+8.  There are 280 links
+    I used the  which function to trace the find function. Then I used ls to li\
+st the rest of the answers and used the grep function to count the ones I neede\
+d.
+
+9.  librom1394.so.0.3.0
+    I took a look at the manual for ls and then proceeded to use the ls command\
+\
+ sorted by -lt
+ 
+10. Under man locale, it states that locale's data is determined by its environ\
+ ments.
+    Data found under man locale
+
+11. downcase-dwim: M-x ... RET
+    downcase-region: C-x C-l
+    Downcase-word: M-l
+    For this one, I used the emacs Help function.
+
+12. C-M-r: command isearch-backward-regexp
+    C-M-v: command scroll-other-window
+    For this one, I used the emacs Help function.
+
+13. C-g runs a command keyboard quit and signals the quit condition.
+    For this one, I used the emacs Help function.
+
+14. "Yank recovers the last stretch of text killed."
+    I found this in the emacs Help function.
+
+15. The only recognizable difference was that emacs gives us current and parent whereas the ls does not.

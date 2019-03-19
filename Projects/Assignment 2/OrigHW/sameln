@@ -1,0 +1,41 @@
+#!/bin/bash
+
+FILES=$(find ${1} -maxdepth 1 -type f | sort)  #Use Directory given
+
+for file1 in $FILES;
+do
+    if test ! -r $file1 ;
+    then
+	echo $file1 not readable. Skipping file
+	continue
+    fi
+    if [ "$(stat -c %h -- "$file1")" -gt 1 ] ; 
+    then
+	echo "File is already linked!"
+	continue
+    elif [ -L "$file1" ];
+    then
+	echo "File is already linked!"
+        continue
+    fi
+    for file2 in $FILES
+    do
+	if [ ! -r $file2 ];
+        then
+            echo $file1 not readable. Skipping file.
+            continue
+        fi
+
+	res=$(cmp $file1 $file2)
+
+	if [ "$file1" == "$file2" ] ;
+	then
+	    echo $file1 and $file2 are the same file! Skipping...
+	    continue
+	elif [ "$res" == "" ] ;
+        then
+	    ln -f "$file1" "$file2" 
+            echo $file1 and $file2 are duplicates. Files are hardlinked.
+        fi
+    done
+done

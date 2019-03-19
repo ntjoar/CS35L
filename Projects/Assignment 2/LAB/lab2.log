@@ -1,0 +1,160 @@
+Lab 2 Notebook
+
+locale - displayed:
+LANG=en_US.UTF-8
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=
+
+As noticesd, LC_ALL was blank so I used:
+export LC_ALL='C'
+LANG=en_US.UTF-8
+LC_CTYPE="C"
+LC_NUMERIC="C"
+LC_TIME="C"
+LC_COLLATE="C"
+LC_MONETARY="C"
+LC_MESSAGES="C"
+LC_PAPER="C"
+LC_NAME="C"
+LC_ADDRESS="C"
+LC_TELEPHONE="C"
+LC_MEASUREMENT="C"
+LC_IDENTIFICATION="C"
+LC_ALL=C
+
+Upon rechecking locale, locale produced output below:
+
+Once that was done, I used the sort command in order to sort the contents of /usr/share/dict/words but redirected the file to write to words.
+Command: sort /usr/share/dict/words > words
+
+Next, I ran through all the commands that were requested to run through on the html file for the document. For this purpose, I labeled the document doc2.html and ran it with '<' in order to have the document be affected by preceding command.
+
+tr -c 'A-Za-z' '[\n*]' < doc2.html
+The output here was a file with all nonalphabetic characters removed and translated into a newline.
+-c will be the complement of set1 which is 'A-Za-z', meaning we are translating characters not mentioned above.
+[CHAR*] is SET2, until the length of SET1, which means that any  part of the document not an alphabetic character is transformed into a newline.
+
+tr -cs 'A-Za-z' '[\n*]' < doc2.html
+This outputs a line by line of the alphabetic characters in the html file, with each seperated by only one newline.
+-cs will concatenate two descriptions -c and -s. -c works as stated above, whereas -s ensures that if two of the same cases are found, the translation is only done once.
+Similarly, the document translates all nonalphabetic to a newline.
+
+tr -cs 'A-Za-z' '[\n*]' < doc2.html | sort
+This outputs a line-by-line of the html document, however, only limited with the number of newlines the previous command used. This command sorts every single line of the document in alphabetical order.
+-cs works similarly as stated above. However, there is a pipe and a command with sort. 
+sort, with no description sorts the file line by line in alphabetical order.
+
+tr -cs 'A-Za-z' '[\n*]' < doc2.html | sort -u
+This outputs the same as above, but only one newline line at the very top.
+Everything works as it normally  does, however the -u specification now exists, making the document be sorted but omitting repeated characters.
+
+tr -cs 'A-Za-z' '[\n*]' < doc2.html | sort -u | comm - words
+This outputs a list of all the words in the word document and the lines in the html document in alphabetical order based on sort.
+comm compares two sorted files line by line.
+
+tr -cs 'A-Za-z' '[\n*]' < doc2.html | sort -u | comm -23 - words
+This outputs a very similar result to the previous one but the result is very limited to 88 words.
+-23 limits the outcomes to 88 due to the suppression of columns 2 and 3.
+
+Once the above is done, we can now start with the project that the lab requires us to do starting with:
+wget http://mauimapp.com/moolelo/hwnwdseng.htm
+
+To start, I opened a text editor for the buildwords.
+
+I started to think and I needed to delete all html tags, ending of the file, beginning of the file and the english words. 
+
+The sed command does this nicely. 
+sed '/<!DOCTYPE/, /Adopt<\/td>/d' |
+sed '/<\/table>/, /<\/html>/d' |
+sed '/<\/tr>/,/<\/td>/d' |	
+sed 's/<[^>]*>//g' |
+
+Proceeding on, I had to replace the weird ` with an ascii ', hence the 
+sed "s/\`/\'/g" |
+
+From there, I replaced all upper case with  lower case.
+tr [:upper:] [:lower:] |
+
+Once done with that, I replaced any type of comma or space with a \n
+sed 's/[ ,]/\n/g'  |
+
+Then, I deleted anything that contained a blank line or was just blank to shorten the document
+sed '/^\s*$/d'   |
+tr -d [:blank:]  |
+
+Once done with that, I deleted all characters not Hawaiian, and concatenated any extra newlines to just one.
+tr -c "pk\'mnwlhaeiou" '[\n*]' |
+tr -s '\n' |
+
+Finally, I sorted the directory.
+sort -u
+
+To create the file as an executable, I used the following
+chmod +x buildwords
+
+Then, I tested using the following command
+cat hwnwdseng.htm | ./buildwords > hwords
+
+After running:
+cat assign2.html.1 | tr  [:upper:] [:lower:] 
+| tr -cs "pk\'mnwlhaeiou" '[\n*]' | sort -u 
+| comm -23 - hwords | wc -w
+I get an output of 215 misspelled hawaiian words.
+
+In addition to this,
+cat assign2.html | tr  [:upper:] [:lower:] | 
+tr -cs "A-Za-z" '[\n*]' | 
+sort -u | comm -23 - words | wc -w
+I have an output of 42 English words misspelled
+
+Then, I redirected it all to:
+cat assign2.html.1 | tr  [:upper:] [:lower:]
+| tr -cs "pk\'mnwlhaeiou" '[\n*]' | sort -u
+| comm -23 - hwords > hWords
+
+cat assign2.html | tr  [:upper:] [:lower:] |
+tr -cs "A-Za-z" '[\n*]' |
+sort -u | comm -23 - words > eWords
+
+For misspelled as English but not Hawaiian:
+comm -12 eWords hwords | wc -w 
+I have 3 words.
+Examples:
+halau
+lau
+wiki
+
+For misspelled as Hawaiian but not English:
+comm -12 hWords words | wc -w
+I have 118 words
+Examples:
+ula
+ule
+ume
+ump
+un
+uni
+up
+w
+wa
+wan
+we
+well
+wh
+wha
+when
+who
+wi
+will
+wo

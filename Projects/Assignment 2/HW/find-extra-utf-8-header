@@ -1,0 +1,26 @@
+#!/bin/bash
+
+FILES="$(find ${@} -type f)"  #Use Directory given
+
+for files in $FILES
+do
+    if grep -s -q -Pa '\x00' "$files"
+    then
+        continue
+    fi
+    if LC_ALL=en_US.utf8 grep -q '[^[:print:][:space:]]' "$files"
+    then
+        continue
+    fi
+    TEST=$(file $files | cut -d\  -f2)
+    if [ $TEST == "ASCII" ]
+    then
+        HEAD="$(head -n 1 "$files" | grep -e "-\*- coding: utf-8 -\*-")"
+        if [ "$HEAD" ]
+        then
+            echo "$files" has a UTF-8 header.
+        fi
+    else
+        continue
+    fi
+done

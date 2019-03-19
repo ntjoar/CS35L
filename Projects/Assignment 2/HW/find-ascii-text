@@ -1,0 +1,22 @@
+#!/bin/bash
+
+FILES="$(find ${@} -type f)"  #Use Directory given
+
+for files in $FILES
+do
+    if 
+    then
+	continue
+    fi
+    if LC_ALL=C grep -q '[^[:print:][:space:]]' "$files"
+    then
+       	continue
+    fi
+    TEST=$(file $files | cut -d\  -f2)
+    if [ $TEST == "ASCII" ]
+    then
+	echo "$files" is an ascii file.
+    else
+	continue
+    fi
+done

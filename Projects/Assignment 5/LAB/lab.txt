@@ -1,0 +1,50 @@
+Lab Notebook
+To start with this lab, I started by making myself a big file using the
+command: dd if=/dev/urandom of=bigfile.txt bs=1M count=5
+
+Moving on, I looked at the lab spec and tested to better understand what
+the spec was asking me to do. By running 
+'printf 123456789 | tr 13579 abcde'
+This returned: a2b4c6d8e
+From this note, I knew to develop some type of script that took arguments
+and then implemented the tr command. Additionally, I could ignore overall
+options.
+
+Proceeding on, I started my first program: emacs tr2b.c and tr2u.c
+
+In this, I ran into a few issues with  forgetting the library in tr2u.c
+However, the structure of my  code was as follows:
+
+Check number of arguments is three
+Assign pointers to argument parameters
+Check pointers have same length
+Check for no repetition
+Get first character of the input
+Repeatedly
+     Check if that character matches any from
+	If so, write in from and continue
+     If no character written yet
+	Write character given
+     Get new character
+
+For the strace result, I ran the following:
+strace -o straceRes_tr2b.txt ./tr2b 12345 abcde < bigfile.txt
+and
+strace -o straceRes_tr2u.txt ./tr2u 12345 abcde < bigfile.txt
+
+The difference above was that the one invoking system calls started printing
+the entire document, whereas the first one printed only the first line of the
+document.
+
+Running the time command on the bigfile.txt, I get
+time ./tr2b 12345 abcde < bigfile.txt
+Outputs:
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
+
+time tr2u 12345 abcde < bigfile.txt
+Outputs:
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s

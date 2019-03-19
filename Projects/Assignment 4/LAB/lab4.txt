@@ -1,0 +1,80 @@
+Lab Notebook
+
+wget https://web.cs.ucla.edu/classes/winter19/cs35L/assign/coreutils-with-bug.tar.gz
+Gets the tar file
+
+Unzipped using tar -xf coreutils-with-bug.tar.gz
+
+Similar to lab3, all the instructions to compile and install the program, so I ran through 
+the usual steps.
+
+Started with ./configure --prefix=/u/cs/ugrad/tjoar/35L/LAB4/LAB/coreutils-with-bug
+This configures the directory I am in for the file compilation.
+
+Then, I ran make.
+Make helped with compiling the program. However, I ran into an issue with make, being:
+In file included from utimecmp.c:41:0:
+utimens.h:2:5: error: conflicting types for 'futimens'
+ int futimens (int, char const *, struct timespec const [2]);
+     ^
+In file included from utimecmp.h:25:0,
+                 from utimecmp.c:25:
+/usr/include/sys/stat.h:373:12: note: previous declaration of 'futimens' was here
+ extern int futimens (int __fd, const struct timespec __times[2]) __THROW;
+
+Then I ran make install, which again, gave me an error:
+In file included from utimecmp.c:41:0:
+utimens.h:2:5: error: conflicting types for 'futimens'
+ int futimens (int, char const *, struct timespec const [2]);
+     ^
+In file included from utimecmp.h:25:0,
+                 from utimecmp.c:25:
+/usr/include/sys/stat.h:373:12: note: previous declaration of 'futimens' was here
+ extern int futimens (int __fd, const struct timespec __times[2]) __THROW;
+            ^
+
+To try and fix these errors, I made a patch file known as pat and copy and 
+pasted the given patch in. Then, I ran the patch command with a -p0 option.
+In addition to this, I ran the command with the --ignore-whitespace option.
+
+Then, I ran the same commands as before, make, which did not give me any errors.
+
+Next, I ran the make install command, which now installed without error.
+
+To recreate the bug, I followed the steps that it took to make the bug in the 
+first place. I started with making a testComm bash script that would test the
+error.
+From this, I noticed:
+The timestamps were all very different than what they were supposed to be, having
+some stamp of +0000
+
+To start, I opened up 'gdb ~/35L/LAB4/LAB/coreutils-with-bug/bin/ls' and looked through
+the values using 'info fuctions'.
+I noticed there was a compare_mtime function, which seemed to be one of the main errors
+so I set up a breakpoint there. Then I used 'run -lt', 'stepi', and list consecutvely,
+which gave me the thought that an error could be mainly in the a.tv_nsec - b.tv_nsec,
+which may have been an overflow error. 
+
+Moving on, I quit the debugging function and made a copy 'cp lib/timespec.h timespec.h'
+to first check on the data size. 
+
+Moving down to the function timespec_cmp, I changed the return values to be -1, 0, and
+1, given the same parameters. Once done, I exited emacs and incorporporated
+diff -u lib/timespec.h timespec.h > lab4.diff
+
+Then, I added a changelog using C-x 4-a, as well as prepending lib to timespec.h
+
+Running the tester again, I got:
+Output:
+-rw-r--r-- 1 tjoar csugrad 0 2019-02-03 15:44:15.990168000 -0800 now1
+-rw-r--r-- 1 tjoar csugrad 0 2019-02-03 15:44:03.361001000 -0800 now
+-rw-r--r-- 1 tjoar csugrad 0 1918-12-17 09:28:16.000000000 -0700 wwi-armistice
+
+However, testing on SEASNet,
+-rw-r--r-- 1 tjoar csugrad 0 2054-12-17 09:28:16.000000000 -0800 wwi-armistice
+-rw-r--r-- 1 tjoar csugrad 0 2019-02-03 15:44:03.361001000 -0800 now
+-rw-r--r-- 1 tjoar csugrad 0 1918-12-17 09:28:16.000000000 -0700 wwi-armistice
+
+Notice that the output is different than expected. This is due to UNIX's timeline 
+database being specifically in a certain time period, leaving undefined behavior 
+when it leaves that time period.

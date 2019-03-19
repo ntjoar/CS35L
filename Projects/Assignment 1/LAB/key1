@@ -1,0 +1,56 @@
+1.  man man
+
+2.  which mv
+    which sh
+   
+3.  man -k ^.r$
+
+4.  which /usr/bin/emacs
+    ls -al /usr/bin/emacs
+
+5.  /usr/bin/gcc -v
+    gcc -v
+
+6.  man chmod
+
+7.  man find
+    find /usr/local/cs -type d -mtime -28
+
+8.  which find
+    cd /usr/bin
+    ls -l | grep ^l | wc
+
+9.  ls /usr/lib64 -lt
+
+10. man locale
+
+11. emacs
+    C-h
+    a
+    downcase
+
+12. emacs
+    C-h
+    c
+    C-M-r
+
+    emacs
+    C-h
+    c
+    C-M-v
+
+13. emacs
+    C-h
+    k
+    C-g
+
+14. emacs
+    C-h
+    f
+    yank
+
+15. ls /usr/bin -l
+
+    C-x
+    d
+    /usr/bin

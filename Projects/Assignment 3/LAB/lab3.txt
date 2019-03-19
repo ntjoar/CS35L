@@ -1,0 +1,72 @@
+Lab 3 Notebook
+First, I started by getting the files needed for the lab using
+wget ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz
+wget ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz.sig
+wget https://ftp.gnu.org/gnu/gnu-keyring.gpg
+
+Starting from here, I ran 
+gpg --verify --keyring ./gnu-keyring.gpg
+--verify : File is veified without generating any outputs
+      	   signature packet is read from STDIN
+--check-sigs : signatures are verified
+
+This outputs:
+gpg: Signature made Wed 27 Dec 2017 10:29:05 AM PST using RSA key ID 306037D9
+gpg: /u/cs/ugrad/tjoar/.gnupg/trustdb.gpg: trustdb created
+gpg: Good signature from "Pádraig Brady <P@draigBrady.com>"
+gpg:                 aka "Pádraig Brady <pbrady@redhat.com>"
+gpg:                 aka "Pádraig Brady <pixelbeat@gnu.org>"
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 6C37 DC12 121A 5006 BC1D  B804 DF6F D971 3060 37D9
+The only thing happening was a warning, due to the fact that the key
+does not have any indication that it belongs to the owner
+
+To open the package, I used the command tar -xf coreutils-8.29.tar.xz
+Once done, I navigated into the file using cd
+Inside, I listed all the files and looked through the INSTALL file
+To compile the package, I had to use ./configure and proceed to use
+'make', or 
+optionally, 'make check' in order to run self tests that come 
+with the package. 
+Otherwise, 'make installcheck' can repeat self-tests but using 
+only binaries.
+Alternatively, I can run 'make install' to install program and 
+datafiles.
+Another alternative is to use 'make installcheck' to repeat 
+self-tests, but using binaries in final install location.
+To remove binaries and object files, I could use 'make clean'
+To redo configure, use 'make distclean'
+Also, there is a 'make maintainer-clean' target, but inteded 
+mainly for package developers
+To remove installed files, use 'make distcheck'.
+Some packages, particularly ones that use Automake, provide
+'make distcheck'
+
+To start, I ran './configure --prefix=/u/cs/ugrad/tjoar/35L/LAB3/LAB/LabTest' 
+to configure the directory for the Lab to be in my folder specifically.
+Once done, I ran 'make check' to ensure any tests needed to be
+done could be done. Finally, I ran 'make install'.
+Both './configure' and 'make check printed many lines of data
+regarding my system.
+'make' compiled the file
+'make install' installed the file in the system.
+
+Upon reproducing the bug test case, I came across the fact that both
+'ls -a', 'ls -Aa and 'ls -aA' produced an output with a '.' and'..' 
+that 'ls -A' did not produce.
+
+I ran the 'patch -p1 --verbose --ignore-whitespace < patchfile' 
+comand to apply a diff file to the original.
+
+Once done with that, I ran the 'make' command to compile the commands again.
+Additionally, I ran 'make install' in order to run the commands.
+
+I reproduced the bug through running 'ls -a', 'ls -aA', and 'ls -Aa'
+The three produced the same result, with a '.' and '..' directory.
+
+Then, I reran 'autoreconf --force --install' 
+to compile the program and 'make install'to reinstall it all.
+
+Proceeding on, I continued by testing 'ls -aA' and 'ls -Aa' in which now,
+the files no longer run differently.

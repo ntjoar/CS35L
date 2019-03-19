@@ -1,0 +1,40 @@
+Homework Answers
+1. For the patch, the patch seemed to only  affect the
+   part of the program with ls -aA and ls -Aa. It fixed
+   the previous bug and allows for an override in the 
+   program.
+
+2. If my company adopts this version of the coreutils, I
+   would worry about the main problem that may arise that
+   is with  the order that any ls commands may use -a and
+   -A in.
+
+3. Output:
+Traceback (most recent call last):
+  File "randline.py", line 70, in <module>
+    main()
+  File "randline.py", line 64, in main
+    sys.stdout.write(generator.chooseline())
+  File "randline.py", line 34, in chooseline
+    return random.choice(self.lines)
+  File "/usr/lib64/python2.7/random.py", line 274, in choice
+    return seq[int(self.random() * len(seq))]  
+    # raises IndexError if seq is empty
+IndexError: list index out of range
+    
+   This is an index error caused by the program trying to access
+   a position of the array that  is not in the index of the program.
+   In essence, the empty file is treated as the program trying to 
+   access an index at position zero, which the program does not 
+   like due to undefined behavior.
+
+4. Output:
+  File "randline.py", line 65
+    except IOError as (errno, strerror):
+                      ^
+SyntaxError: invalid syntax
+   This is an invalid syntax error due to the fact that this relies
+   on the idea that python2 can have iterations over the parameters
+   by iterating over the exception itself. This breaks the Python 
+   rule of "Explicit is better than implicit". Thus, this is taken
+   out in Python3.

@@ -1,0 +1,166 @@
+Lab Notebook
+To start with this lab, I started by making myself a big file using the
+command: dd if=/dev/urandom of=bigfile.txt bs=1M count=5
+
+Moving on, I looked at the lab spec and tested to better understand what
+the spec was asking me to do. By running 
+'printf 123456789 | tr 13579 abcde'
+This returned: a2b4c6d8e
+From this note, I knew to develop some type of script that took arguments
+and then implemented the tr command. Additionally, I could ignore overall
+options.
+
+Proceeding on, I started my first program: emacs tr2b.c and tr2u.c
+
+In this, I ran into a few issues with  forgetting the library in tr2u.c
+However, the structure of my  code was as follows:
+
+Check number of arguments is three
+Assign pointers to argument parameters
+Check pointers have same length
+Check for no repetition
+Get first character of the input
+Repeatedly
+     Check if that character matches any from
+	If so, write in from and continue
+     If no character written yet
+	Write character given
+     Get new character
+
+For the strace result, I ran the following:
+strace -o straceRes_tr2b.txt ./tr2b 12345 abcde < bigfile.txt
+and
+strace -o straceRes_tr2u.txt ./tr2u 12345 abcde < bigfile.txt
+
+The difference above was that the one invoking system calls started printing
+the entire document, whereas the first one printed only the first line of the
+document.
+
+Running the time command on the bigfile.txt, I get
+time ./tr2b 12345 abcde < bigfile.txt
+Outputs:
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
+
+time tr2u 12345 abcde < bigfile.txt
+Outputs:
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+---
+
+Time Difference
+Tested on files of size 1M Bytes, 2M Bytes, 3M Bytes, 4M bytes, and 
+5M bytes.
+
+sfrob
+1M bytes:
+real	0m0.028s
+user	0m0.000s
+sys	0m0.002s
+2M bytes:
+real	0m0.146s
+user	0m0.001s
+sys	0m0.001s
+3M bytes:
+real	0m0.189s
+user	0m0.002s
+sys	0m0.000s
+4M bytes:
+real	0m1.572s
+user	0m0.000s
+sys	0m0.002s
+5M bytes:
+real	0m0.187s
+user	0m0.000s
+sys	0m0.002s
+
+sfrobs
+1M bytes:
+real	0m0.196s
+user	0m0.010s
+sys	0m0.026s
+2M bytes:
+real	0m5.682s
+user	0m0.012s
+sys	0m0.061s
+3M bytes:
+real	0m1.648s
+user	0m0.015s
+sys	0m0.082s
+4M bytes:
+real	0m2.824s
+user	0m0.028s
+sys	0m0.089s
+5M bytes:
+real	0m1.555s
+user	0m0.030s
+sys	0m0.112s
+
+sfrobs -f
+1M bytes:
+real	0m0.047s
+user	0m0.009s
+sys	0m0.025s
+2M bytes:
+real	0m0.513s
+user	0m0.015s
+sys	0m0.046s
+3M bytes:
+real	0m1.788s
+user	0m0.022s
+sys	0m0.068s
+4M bytes:
+real	0m1.370s
+user	0m0.020s
+sys	0m0.095s
+5M bytes:
+real	0m6.221s
+user	0m0.037s
+sys	0m0.110s
+
+sfrobu
+1M bytes:
+real	0m2.097s
+user	0m0.328s
+sys	0m1.761s
+2M bytes:
+real	0m4.312s
+user	0m0.659s
+sys	0m3.636s
+3M bytes:
+real	0m6.284s
+user	0m1.099s
+sys	0m5.155s
+4M bytes:
+real	0m8.356s
+user	0m1.353s
+sys	0m6.964s
+5M bytes:
+real	0m10.734s
+user	0m1.795s
+sys	0m8.897s
+
+sfrobu -f
+1M bytes:
+real	0m2.131s
+user	0m0.345s
+sys	0m1.775s
+2M bytes:
+real	0m4.157s
+user	0m0.659s
+sys	0m3.481s
+3M bytes:
+real	0m6.214s
+user	0m1.037s
+sys	0m5.149s
+4M bytes:
+real	0m8.339s
+user	0m1.396s
+sys	0m6.904s
+5M bytes:
+real	0m10.425s
+user	0m1.694s
+sys	0m8.685s
