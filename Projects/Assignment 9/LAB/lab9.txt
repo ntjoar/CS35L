@@ -1,0 +1,194 @@
+Lab Notebook
+
+First, to get the file, I ran 
+'git clone https://git.savannah.gnu.org/git/diffutils.git'
+Output:
+Cloning into 'diffutils'...
+remote: Counting objects: 5216, done.
+remote: Compressing objects: 100% (1400/1400), done.
+remote: Total 5216 (delta 3753), reused 5216 (delta 3753)
+Receiving objects: 100% (5216/5216), 1.52 MiB | 0 bytes/s, done.
+Resolving deltas: 100% (3753/3753), done.
+
+Then, moving into the the file using 'cd diffutils'.
+I used 'git log > git-log.txt' to get the log of git changes.
+
+After this, I used 'git tag > git-tags.txt' to get the tags used
+for this directory of files.
+
+Proceeding on, I ran 'git log --grep="maint: quote" | grep commit'
+to get the commits.
+I get the output:
+'commit 62ca21c8c1a5aa3488589dcb191a4ef04ae9ed4f'
+
+This output, I put into that command gitshow and move this into
+the quote_patch file given.
+
+As the spec noted, I ran 'git checkout v3.0' to check out the version 3.0
+from my coreutils.
+The following output was generated:
+Note: checking out 'v3.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at 022cd5c... version 3.0
+
+The next part was to patch this file, so I ran 'patch -p1 < quote_patch.txt'.
+I was unable to patch line 35, having README.rej fail, README-hacking fail, 
+TODO and cfg.mk fail, doc/diagmeet.note fail, and skipped man/help2man fail.
+Also I go several hunk errors in src/diff.h, src/diff3.c, and src/dir.c.
+
+Then, I ran 'git status' to  get what happened; this generated the 
+output:
+# HEAD detached at v3.0
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   NEWS
+#	modified:   README
+#	modified:   TODO
+#	modified:   doc/diagmeet.note
+#	modified:   ms/config.bat
+#	modified:   ms/config.site
+#	modified:   po/en.po
+#	modified:   src/analyze.c
+#	modified:   src/cmp.c
+#	modified:   src/context.c
+#	modified:   src/diff.c
+#	modified:   src/diff.h
+#	modified:   src/diff3.c
+#	modified:   src/dir.c
+#	modified:   src/ifdef.c
+#	modified:   src/io.c
+#	modified:   src/sdiff.c
+#	modified:   src/side.c
+#	modified:   src/system.h
+#	modified:   src/util.c
+#	modified:   tests/help-version
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	NEWS.orig
+#	README-hacking.orig
+#	README-hacking.rej
+#	README.orig
+#	README.rej
+#	cfg.mk.orig
+#	cfg.mk.rej
+#	git-log.txt
+#	git-tags.txt
+#	ms/config.site.orig
+#	quote_patch.txt
+#	src/cmp.c.orig
+#	src/context.c.orig
+#	src/diff.c.orig
+#	src/diff.c.rej
+#	src/diff.h.orig
+#	src/diff3.c.orig
+#	src/diff3.c.rej
+#	src/dir.c.orig
+#	src/sdiff.c.orig
+#	src/system.h.orig
+#	src/util.c.orig
+#	tests/help-version.orig
+
+vc-diff is done by 'C-x v', output will be a comparison between 
+current files and the original we started with.
+See others here: 
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Old-Revisions.html
+
+vc-revert is done by 'C-x v u' and reverts the files to last version.
+More here:
+https://www.gnu.org/software/emacs/manual/html_node/emacs/VC-Undo.html
+
+diff-apply-hunk 'C-c C-a' and applies a specified hunk to a target file.
+diff-goto-source is done by 'C-c C-a' and is done to go to a specific hunk
+in a target file.
+More here:
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Diff-Mode.html
+
+Going through each file one at a time, I started with files that were not
+ending in '.c'. These  files were NEWS, README, TODO, doc/diagmeet.note, 
+ms/config.bat, ms/config.site, po/en.po, src/diff.h, src/system.h, 
+and tests/help-version and reverted  all of these using 'C-x v u' 
+followed by a 'yes' when prompted.
+For the .c files, I ran the 
+'C-x v =' and 'C-u C-c C-a'  to undo all hunks
+
+Using 'ls *.c.rej' to find all rejected files in src, I only had to edit two,
+simply changing the files by hardwriting them into the c files themselves.
+
+Then, I ran 'git clean -f'
+Output:
+Removing NEWS.orig
+Removing README-hacking.orig
+Removing README-hacking.rej
+Removing README.orig
+Removing README.rej
+Removing cfg.mk.orig
+Removing cfg.mk.rej
+Removing ms/config.site.orig
+Removing quote_patch.txt
+Removing src/cmp.c.orig
+Removing src/context.c.orig
+Removing src/diff.c.orig
+Removing src/diff.c.rej
+Removing src/diff.h.orig
+Removing src/diff3.c.orig
+Removing src/diff3.c.rej
+Removing src/dir.c.orig
+Removing src/sdiff.c.orig
+Removing src/system.h.orig
+Removing src/util.c.orig
+Removing tests/help-version.orig
+
+Running git status, I get
+# HEAD detached at v3.0
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   src/cmp.c
+#	modified:   src/diff.c
+#	modified:   src/diff3.c
+#	modified:   src/dir.c
+#	modified:   src/sdiff.c
+#	modified:   src/util.c
+#
+
+I  ran 'git diff > quote-3.0-patch.txt' to allocate the diff in the file.
+Also, the wc on lines of the file is 326.
+
+Running './bootstrap'
+Running 
+'curl http://web.cs.ucla.edu/classes/winter18/cs35L/assign/diffutils-gets.diff 
+> diffutils-gets.diff' for the patch, I patch the file with 
+'patch -p0 < diffutils-gets.diff' and then run
+'./configure'
+'make'
+'make check'
+
+And then finally:
+'./src/diff . -'
+'./src/diff --help'
+
+After all of this, I make a final clone of the file
+'git clone https://git.savannah.gnu.org/git/diffutils.git diffutils-3.0'
+Again set checkout
+'git checkout 'v3.0''
+'mkdir diffutils-3.0-patch'
+'cp ./diffutils/src/*.c ./diffutils-3.0-patch/'
+'./diffutils/src/diff -pru diffutils-3.0/src diffutils-3.0-patch > quote-3.0-test.txt'
+
+After all this, I run
+'diff -u quote-3.0-test.txt quote-3.0-patch.txt'
+Noticable diffences are that ' is used rather than `.

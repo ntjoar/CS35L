@@ -1,0 +1,49 @@
+Homework Notebook
+To make a checkout on a new branch quote, I ran
+'git checkout v3.0 -b quote'
+
+Running the patch file, I used 
+'patch -p1 < ../quote-3.0-patch.txt'.
+Output:
+patching file src/cmp.c
+patching file src/diff.c
+patching file src/diff3.c
+patching file src/dir.c
+patching file src/sdiff.c
+patching file src/util.c
+
+Making the changelog,
+'emacs'
+'C-x 4 a'
+'C-x C-s'
+'C-x C-c'
+
+Running the git functions, I ran 
+'git add .'
+'git commit -F ChangeLog'
+Output:
+[quote fec988f] 2019-03-02  Nathan A Tjoar  <tjoar@lnxsrv06.seas.ucla.edu>
+ Committer: Nathan A Tjoar <tjoar@lnxsrv06.seas.ucla.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 369 insertions(+), 43 deletions(-)
+ create mode 100644 quote-3.0-patch.txt
+
+Finally, I formatted using
+'git format-patch -1 --stdout > formatted-patch.txt'
+
+For the lab testing, I worked with Harry Ramli (505148131).
+Running his patch with 'git am', I got it to be functional and it seemed to 
+work regardless.
+
+In running gitk, a popup of XQuartz came up with this.
+The XQuartz file earliest merge came at 1-24-2015.

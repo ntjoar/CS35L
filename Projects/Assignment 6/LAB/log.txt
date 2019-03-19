@@ -1,0 +1,59 @@
+Lab Report
+To start, I ran 'sort --version' in order to check the version of sort I had
+Output:
+sort (GNU coreutils) 8.22
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Mike Haertel and Paul Eggert.
+
+To run the command with a shell script, so I scripted a little script in order
+to evaluate the expression using the power value. This would then construct
+the file using the od command. 
+In essence, I used the following commands:
+#!/bin/bash                                                                     
+
+n=24
+total=$((2**24*4))
+
+od -An -t fF -N $total < /dev/urandom |
+tr -s [:blank:] '\n' |
+sed '/^$/d' > random.txt
+
+$total was the value of 2^24 from the script
+
+In order to check the time it took to sort, I ran
+'time -p sort -g random.txt > /dev/null'
+Output:
+real 8.32
+user 44.80
+sys 0.20
+
+To check the difference with parallel threads, I ran parallel with 1, 2, 4, 
+and 8 threads to see time difference. The command and respective ouput is 
+as recorded below.
+time -p sort -g --parallel=1 random.txt > /dev/null
+Output:
+real 185.76
+user 185.40
+sys 0.32
+
+time -p sort -g --parallel=2 random.txt > /dev/null
+Output:
+real 105.98
+user 201.98
+sys 0.52
+
+time -p sort -g --parallel=4 random.txt > /dev/null
+Output:
+real 58.16
+user 197.68
+sys 0.58
+
+time -p sort -g --parallel=8 random.txt > /dev/null
+Output:
+real 41.42
+user 234.39
+sys 0.77

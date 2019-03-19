@@ -1,0 +1,22 @@
+Homework answers
+1. Due to asymmetric key encryption, regardless of whether or not the other 
+   teams had been watching the  data, it would have been secure enough to 
+   get by undetected with regards to contents in the file. With this, the 
+   other teams would only  be able to look at the file encrypted, without
+   any way of opening it without the key. However, this could change if the
+   other team had our keystrokes, as we set password, user ID and other
+   things using it. As a result, we would be rendered helpless. Even worse,
+   if we booted off of a USB, the network would be at its most unsecure if
+   the other team had control over it at any time. This would give them 
+   access to all the keys and give them dominion to install any spyware 
+   if they so wished.
+
+2. gpg --verify is unable to verify the ownership of data because it only 
+   compares digital signature to encrypted data. Data signatures can still
+   be changed regardless with a man in the middle attack,  thus changing
+   ownership of the data.
+   The only way for us to keep track of the owner/author of a given document
+   is to trust in a third party application that could access the file and
+   who it was created by/what certificate they have on the file. The certificate
+   could essentially be an open possibility to a method of keeping track of 
+   multiple file authors.

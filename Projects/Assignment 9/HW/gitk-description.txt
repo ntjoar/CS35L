@@ -1,0 +1,12 @@
+Gitk App
+The upper left pane shows series of commits to this repository, with the most recent on top.
+The pane to its immediate right is the commit author and its far right, the timestamp.
+
+Its midsection contains the SHA ID, as well as other tools that may help us with finding
+specific commits.
+
+The bottom left will give us a diff file of all the changes made in this commit 
+as well as give us more details on this commit section.
+
+In our last section, the bottom right, it will show the various files affected by the
+given commit.

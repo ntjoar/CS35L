@@ -1,0 +1,89 @@
+Lab Notebook
+
+For this lab, I worked with Jersey Deng.
+
+First step preliminary to the lab, I set up the Beaglebone
+following these instructions:
+Connect your BeagleBone to your computer using the USB cable.
+Find BEAGLEBONE as an external storage device and open it.
+Run START.htm and download the drivers
+
+Due to difficulty of green lighting the second step, I ran:
+sudo rm -rf /System/Library/Extensions/HoRNDIS.kext
+Restart Computer
+sudo ssh root@192.168.7.2
+
+Setting up wifi was done by
+sudo connmanctl
+enable wifi
+scan wifi
+services
+agent on
+connect wifi_506583d4fc5e_544e434150413937414239_managed_psk
+3760ClassNet
+quit
+
+I ran this to get my IP:
+ifconfig
+
+I ran this to get appropriate files:
+sudo apt-get update
+sudo apt-get install xauth
+sudo apt-get install xvfb
+
+I ran these to get my apps for the lab:
+sudo apt-get install firefox-esr-l10n-en-gb
+sudo apt-get install xterm
+sudo apt-get install gedit
+
+My IP: 10.97.85.144
+Partner IP is: 10.97.85.142
+
+ssh-keygen to generate ssh key.
+Passhrase: Password
+
+Create user and password
+sudo useradd -d /home/jdeng -m jdeng
+     By default, I used default library to do this part.
+sudo passwd jdeng
+Password: TmpPass
+
+Setup ssh directory using:
+cd /home/jdeng
+sudo mkdir .ssh
+
+Setup permission using:
+sudo chown –R jdeng .ssh
+sudo chmod 700 .ssh
+
+Similarly, I followed my partner's steps for being the client:
+User: ntjoar
+Password: ucla
+Generating the public/private key
+ssh-keygen
+
+Copying the key to the host
+ssh-copy-id –i ntjoar@10.97.85.142
+
+Add private key to authentication host
+ssh-add
+
+SSH Connection
+ssh ntjoar@10.97.85.142
+Trying to run on this command gave me display errors
+
+ssh -X ntjoar@10.97.85.142
+Trying to run on this opened up applications successfully
+
+ssh -Y ntjoar@10.97.85.142
+Trying to run on this gave me the same results as if I ran on 
+-X
+
+To load	a terminal on my partner's server:
+xterm
+
+To load a untitled text document, I ran:
+gedit
+
+To load a firefox browser on my partner's server:
+firefox
