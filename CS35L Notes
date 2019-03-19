@@ -1,0 +1,412 @@
+CS35L Notes
+
+Operating systems
+	Most important part of the system
+	Manages memory, processes, other softwares and hardwares
+	Makes human to computer communication easy
+
+Multiuser and multi-process operating system
+	Multi-user OS - Allows many user to access/work on a single system at the same time (as long as they have their own terminal)
+
+Open source software
+	Source code is publicly available
+	Modification by any individual is allowed on a global scale
+	It is free for use
+
+CLI/GUI
+	CLI
+		Working on the terminal or the shell
+		Steep learning curve
+		Pure control
+		Only keyboard, faster performance
+		Consumes less resources
+		No changes; less diverse
+
+	GUI 
+		Intuitive
+		Limited control
+		Mouse and keyboard
+		Consumes more resources
+		More changes; more diverse
+
+	Debian GNU/Linux
+		Clone of UNIX
+		Linux is a kernel
+		Kernels are core of any OS
+
+Emacs is a lisp interpreter
+Use scratch buffer to run commands in emacs
+
+==============================================
+
+locale gets its info from its environment (local variables, user, admin, privileges, defined in the GUI, etc.)
+Environment verables are variables that can be accessed from any child process
+
+PATH-list of directories
+HOME-path to usr home
+Locale is set when you start, it defines what you use
+
+LC_* gives its environment variables
+'C' locale is the default locale
+
+Sort is based on its encoding
+Look at  its locale command
+
+head - prints the first part of the file
+tail - prints the last part of the file
+sort - sorts the file
+comm - compares two files line by line
+cmp  - compares two files and lists differences
+tr   - translate or deletes characters
+
+grep
+	-r read action
+	-c count nonmatching lines
+	-n line number
+	-l files with matches
+
+(ABC)* - Must match ABC
+[a-z]* - finding occurences of any of the in between
+
+Regex grep can be used using grep -e
+sed -r
+
+grep
+	-l : suppress normal output
+	-L : suppress normal output
+	-v : complementary
+
+Variables are initialized with $ command
+
+Conditional 
+	if... then... elif... else... then... fi
+	case...esac
+
+Unconditional
+	break
+	continue
+
+Loops
+	for x in y... do... done
+	while condition... do... done
+
+You can also pipe in the shell script
+======================================
+Modifying and rewriting software
+Windows
+	InstallShield
+	Miscrosoft/Windows Installer
+Mac
+	Drag and drop from .dmg
+Linux
+	rpm
+	apt-get
+	Good old build process
+
+tar
+	-x --extract
+	-z --gzip
+	-v --verbose
+	-f --file
+
+Compilation process
+	Preprocess
+	Compiler
+	Assembler
+	Linker
+
+Compile only the c files
+gcc
+g++
+
+make
+	utility for managing large software projects
+	Compiles files and keeps up to date
+	Checks based on timestamp
+		If wrong, then the file recompiles and then runs
+	
+Python is an OOP
+Python is not a direct interpreter
+Not as fast as C but easy to learn, read and use
+Different modes
+	Interactive
+		Type 'python' or 'python3'
+	Script
+		emacs, vi, vim
+
+Python variables
+	Case sensitive
+
+Python list is like an array but mutable and heterogeneous
+Dictionary is a hash  table
+
+String slicing - Python has reverse indexing
+	 0  1  2  3  4
+	-5 -4 -3 -2 -1
+
+==================================================================
+
+Next Tuesday presentation
+5-7 Minutes presentation + 3 minutes for questions (max)
+	Topic must be according to guidelines
+	A complete understanding of the paper
+	What it's application is
+	Critique on the paper
+
+Pointers
+Function Pointer
+Dynamic memory
+	Memory allocated at runtime
+	Allocated on the heap
+	void *malloc(size_t size);
+		Allocates size bytes and returns a pointer to the allocated memory
+	void *realloc(void *ptr, size_t size);
+		Changes the size of the memory block
+	void *free();
+int getchar();
+Use * for pass by reference
+
+Overflow and underflow can happen in C, because of cstrings and unsigned/signed longs
+
+Debugging
+	You cannot always debug using print
+	GDB-GNU Debugger
+
+Normal: gcc [flags] <source_file> -o <output_file>
+Debugging: gcc [flags] <source_file> -g <output_file>
+gdb <executable>
+See slides for more
+Watchpoints - Prints value at a line
+Breakpoints - Stops program at line
+
+==================================================================
+
+Kernel is an interface between hardware and software
+Lowest layer above the CPU
+	Ex: Android OS
+
+Modes:
+Operating modes that place restrictions on the type of operations that can be perforemed by running process
+	User vs Supervisor
+
+Kernel mode has no restrictions
+If we crash a specific piece of memory, we break the process
+	With user mode, we can fix this
+	We cannot with kernel mode
+
+User space vs Kernel Space
+	User is where normal users processes run
+		Limited to memory, CPU, I/O
+	Kernel is unrestricted
+
+Kernels are only run by a supervisor
+What about user processes?
+
+When a system call is made the program being executed is interupted and passed into the kernel
+If the operation is valid, the kernel performs it
+
+System call overhead
+	System calls are expensive and can hurt performance
+	Computer stops and must save its state
+	OS takes control and verifies the operations
+	OS gives control of the CPU back to user process
+
+Making a system call
+	Takes resources
+	App devs don't have access
+	Invoke the API
+
+Types of System Calls
+	Process Control
+		Controls processes that are working in the system
+	File Management
+		Read, write, close, open, etc. on a file
+	Device management
+		Devices you are connected to inside an OS
+	Information management
+		Time and date of the systems
+	Communications
+		Interprocess communication
+
+Look at the Slides for the system control, try them out and learn what they do each
+If no system calls, kernel is open, sec threat
+Library functions reduce the necessary amount of work that you actually do
+	Trace command
+The functions make system calls
+It does the same things, but library calls will minimize  resources  needed
+
+Unbuffered vs buffered I/O
+	Unbuffered means that every file byte is read until EOF
+	Buffered means it collects as many as possible in a single byte and use one system call for a block of bytes
+
+Lab 4 translates over to this one
+
+==================================================================
+
+fstart stores all your info for the file
+Threading
+Parallelism
+Multithreading
+
+Multiprocessing
+	Two types
+		Use of multiple CPU/ Cores to run multiple tasks sumultaneously
+		Parallelism is doing multi[le dings at the same time
+
+	Multitasking
+		Doing multiple tasks
+	Multithreading
+		Breaking apart one task
+	A thread is the smallest unit of processing scheduled by the OS
+	A processor switches between different threads
+	Processes vs threads
+		Different processes see seperate address spaces
+		All threads in the same process share the same memory except for stack
+
+	pthreads are needed for synchronization and provides consistency
+
+Mutex
+	You lock a thread so it cannot be accessed until later
+	Semaphores
+
+Mutex is an object which alows only one thread into a critical section
+
+Lock (mutex)
+Do work
+Unlock (mutex)
+
+Semaphore 
+	Similar to Mutex
+	Instead, we want it to have a certain amount to do at the same time
+
+Semaphores multiple threads can access the same resource
+Mutex will allow only one thread to access the same resource at the same time
+
+Using piping, we have 3 seperate processes in 1, 2, ..., n order
+Pipes and system calls
+
+Multithreading share the same space except the stack space
+Think about how to write a few threaded programs before you start
+Take your time and don't jump in so quickly
+#include <pthread.h>
+call with -lpthread
+
+Look at the slides for all the thread commands. Good to play with tomorrow morning before and on the surfliner
+
+Lab 6
+	create thread
+	thread join
+	Join connects the threads together and forces them to wait on each other before exiting  the program
+	pthread_mutex_lock goes into the function that uses first
+	pthread _create/join/equal/...-look at the slides
+
+	tid-unique identifier
+	make sure to create and join all the threads
+
+
+Lab 7 on Thursday, can start then, so try to get as much of 32 done before then
+	Dynamic linking is essentially relative references
+	Check for more in the slides
+
+Creating/Using static library
+	gcc -c ... -o ...
+	ar rcs lib mvlib.a.lib mvslib.o
+		Archiver
+	.o required for archiver and linker
+
+Instruction Dynamic linking
+	Create a c file for library functions
+		lib_mylib.c
+	Create a header file
+		lib_mylib.c
+	Compile files w/o linking
+		gcc -fPIC -c lib_mylib.c -o lib_mylib.o
+	Create a dynamic library
+		gcc -shared -o lib_mydynamiclib.so lib_mylib.o
+	Get the main code
+		main.c
+	Compile and link the main with static library
+	gcc -Wl,-rpath=$PWD -o myCode main.c -L. -l_mydynamiclib
+
+	dl_handle = dlopen("lib_mydynamiclib.so", RTLD_LAZY)
+	myfunc = dlsym(dl_handle, "myLibrary"); error = dlerror();
+
+==================================================================
+
+Communication over the internet
+	Confidentiality
+	Data integrity
+	Authentication
+	Authorization
+
+Symmetric Key encryption
+	Shared secret key
+	Key to encrypt is same as the  key to decrypt
+
+Asymmetric Key Encryption (Public/Private)
+	2 keys
+	Only user knows the relation
+
+Caesar cipher is shifting the alphabet
+Key distribution is a problem
+
+Public key enc
+	RSA
+	Use public key to encrypt message, but cannot decrypt ciphertext
+
+Host validation Hosts public key vs private key
+
+Digital signature
+	Generate a message digest
+	Create a sig
+	Send with sig encrypt
+Receiver 
+	Recover the digest
+	Genrate messg digest
+	Compares digest
+
+Practice all the old labs, whatever code was written
+Understand all parts of each lab. Learn ALL commands by heart
+Git commands, All practical, no theory
+How to use all the commands and use all the paper
+No direct theoretical questions
+
+Beaglebone lab extended until Tuesday, 23:55
+Assignment 9 and 10 due next Friday
+
+Make sure to explore gpg commands
+Generate key pairs
+
+==================================================================
+
+Git and github are  not the same
+
+Git allows file management sharing
+	This is a software dev process
+	We give version control to our project
+	This gives track management of who changes what when and what bugs still exist
+	Local VCS is a database with all our files
+	We have a central server controlling everything
+	Our system is the central control system
+	Push a change into it and works directly off of the server
+
+You will never work outside the server
+	No user can interact with different users, all users interact only with the server
+	Users have each their own server databases, and there is a central database
+
+Git - distributed version control system
+
+Working directory ----- git add ----> staging area ----- git commit ----> git directory (repository)
+Working directory <---- git checkout ----- git directory
+
+head and master  move together
+
+Git integrating changes
+	Required when there are changes in multiple branches
+	Merge is simple and straightforward
+	Rebase is much more clean
+
+Gitk
+	Learn and use it
+
+
